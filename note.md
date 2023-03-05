@@ -535,3 +535,130 @@ console.log(arr)
 
 - 数组索引
 
+  ```js
+  var arr = [1,2,3,5,3,2,1]
+  // 索引从0开始，重复元素返回第一个
+  // 如果不存在返回-1
+  // 从前往后找
+  console.log(arr.indexOf(1))
+  // 从后往前找，但是下标还是从0开始
+  console.log(arr.lastIndexOf(1))
+  ```
+
+- 数组去重
+
+  ```js
+  var arr = [1,2,3,5,3,2,1]
+  var res = []
+  for(var i =0;i<arr.length;i++){
+      if(res.indexOf(arr[i])===-1){
+          res.push(arr[i])
+      }
+  }
+  console.log(res)
+  ```
+
+- 数组转换字符串
+
+  ```js
+  var arr = [1,2,3,5,3,2,1]
+  // toString默认分隔符为，
+  console.log(arr.toString())
+  // join 里面是分隔符
+  console.log(arr.join(''))
+  ```
+
+  #### String
+
+  - 基本包装类型
+
+    - 特殊引用类型：String、Number、Boolean
+    - 基本包装类型就是把简单数据类型包装成复杂数据类型，这样就有了属性和方法
+
+  - 返回字符串位置
+
+    ```js
+    var str = '我在吃饭'
+    console.log(str.indexOf('饭'))
+    console.log(str.lastIndexOf('饭'))
+    ```
+
+  - 实现效果1:查找所有o出现的位置和次数
+
+    ```js
+    var str = 'shjaakdqowdasdqodfsddosa'
+    var sum = 0
+    var index = str.indexOf('o')
+    var res = []
+    while(index!=-1){
+        res.push(index)
+        // 若找到o，则更新index，并且从下一个字母继续找
+        index = str.indexOf('o',index+1)
+        sum++
+    
+    }
+    console.log(res)
+    console.log(sum)
+    ```
+
+  - 根据位置返回字符
+
+    ```js
+    var str = 'shjaakdqowdasdqodfsddosa'
+    // 返回字符
+    console.log(str.charAt(3))
+    console.log(str[3])
+    // 返回字符阿斯克码
+    console.log(str.charCodeAt(3))
+    
+    ```
+
+  - 统计出现字符最多的次数
+
+    ```js
+    var str = 'shjaakdqowdasdqodfsddosa'
+    var obj = {}
+    for(var i = 0;i<str.length;i++){
+        var chars = str.charAt(i)
+        if(obj[chars]){
+            obj[chars]++
+        }else {
+            obj[chars] = 1
+        }
+    }
+    var max_char = ''
+    var max = 0
+    for(var key in obj){
+        if(obj[key]>max){
+            max = obj[key]
+            max_char = key
+        }
+    }
+    console.log(obj)
+    console.log(max_char)
+    console.log(max)
+    ```
+
+  - 字符串的操作
+
+    ```js
+    var str1 = 'shjaakdqowdasdqodfsddosa'
+    var str2 = 'uuuu'
+    //拼接：concat
+    var str3 = str1.concat(str2)
+    console.log(str3)
+    
+    //截取：substr（截取开始的位置，截取多少个字符）
+    var str4 = str1.substring(0,2)
+    console.log(str4)
+    
+    //替换：replace（被替换的字符，替换的字符）,只会替换第一个字符
+    var str5 = str2.replace('u','a')
+    console.log(str5)
+    
+    //字符转换数组：split（分隔符）
+    var str6 = str1.split('')
+    console.log(str6)
+    ```
+
+    
